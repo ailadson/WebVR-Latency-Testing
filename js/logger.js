@@ -6,15 +6,28 @@ function Logger(name, controls){
 
 Logger.prototype.update = function(){
   if(this.active){
+    var currentTime = Date.now();
+
     this.log.push({
       z: this.controls.alpha,
       x: this.controls.beta,
-      y: this.controls.gamma
+      y: this.controls.gamma,
+      time: currentTime,
+      mark : this.mark
     });
+
+    this.mark = false;
+    if(currentTime - this.startTime >= this.time ){ this.finish(); }
   }
 };
 
-Logger.prototype.activate = function(name){
+Logger.prototype.mark = function(mark){
+  this.mark = mark || true;
+};
+
+Logger.prototype.activate = function(time, name){
+  this.startTime = Date.now();
+  this.time = time;
   this.name = name || this.name;
   this.log = [];
   this.active = true;
