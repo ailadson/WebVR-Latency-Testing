@@ -105,6 +105,7 @@
           }
 
           controls = new THREE.DeviceOrientationControls(camera, true);
+          controls.autoAlign = false;
           controls.connect();
           controls.update();
           renderer.domElement.addEventListener('click', fullscreen, false);
@@ -119,15 +120,6 @@
 
         setTimeout(fullscreen, 1);
       }
-
-			function moveForward(){
-
-				userDelta = 60;
-			}
-
-			function stopMoveForward(){
-				userDelta = 0;
-			}
 
       function animate(){
         requestAnimationFrame(animate);
