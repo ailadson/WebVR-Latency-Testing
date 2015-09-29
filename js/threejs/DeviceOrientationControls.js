@@ -52,8 +52,10 @@
 THREE.DeviceOrientationControls = function(object) {
 
   this.object = object;
+  console.log(this.object);
 
   this.object.rotation.reorder('YXZ');
+  console.log(this.object);
 
   this.freeze = true;
 
