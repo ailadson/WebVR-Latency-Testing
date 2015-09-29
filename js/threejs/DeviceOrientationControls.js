@@ -118,14 +118,14 @@ THREE.DeviceOrientationControls = function(object) {
       quaternionLerp.slerp(quaternion, 0.5); // interpolate
 
       // orient the device
-      if (/*this.autoAlign*/false) this.orientationQuaternion.copy(quaternion); // interpolation breaks the auto alignment
+      if (this.autoAlign) this.orientationQuaternion.copy(quaternion); // interpolation breaks the auto alignment
       else this.orientationQuaternion.copy(quaternionLerp);
 
       // camera looks out the back of the device, not the top
       this.orientationQuaternion.multiply(q1);
 
       // adjust for screen orientation
-      this.orientationQuaternion.multiply(q0.setFromAxisAngle(zee, - this.orient));
+      // this.orientationQuaternion.multiply(q0.setFromAxisAngle(zee, - this.orient));
 
       this.object.quaternion.copy(this.alignQuaternion);
       this.object.quaternion.multiply(this.orientationQuaternion);
