@@ -106,7 +106,9 @@
 
           controls = new THREE.DeviceOrientationControls(camera, true);
           controls.connect();
+          console.log(camera.rotation.y);
           controls.update();
+          console.log(camera.rotation.y);
           renderer.domElement.addEventListener('click', fullscreen, false);
 
           window.removeEventListener('deviceorientation', setOrientationControls, true);
