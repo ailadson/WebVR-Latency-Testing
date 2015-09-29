@@ -23,6 +23,7 @@
 
     <script src="js/threejs/three.min.js"></script>
 
+    <script src="js/logger.js"></script>
     <script src="js/threejs/StereoEffect.js"></script>
     <script src="js/threejs/DeviceOrientationControls.js"></script>
     <script src="js/threejs/OrbitControls.js"></script>
@@ -31,6 +32,8 @@
       var container, stats;
       var camera, scene, renderer;
       var mesh;
+
+      var logger;
 
       var clock = new THREE.Clock();
 
@@ -97,7 +100,6 @@
         );
         controls.noZoom = true;
         controls.noPan = true;
-        // camera.rotation.y = Math.PI;
 
 				function setOrientationControls(e){
           if(!e.alpha){
@@ -105,6 +107,7 @@
           }
 
           controls = new THREE.DeviceOrientationControls(camera, true);
+          logger = new Logger("test", controls);
           controls.connect();
           console.log(camera.rotation.y);
           controls.update();
@@ -130,6 +133,7 @@
 				camera.position.z -= dt * userDelta;
         camera.updateProjectionMatrix();
         controls.update(dt);
+        logger.update();
       }
 
       function render(){
