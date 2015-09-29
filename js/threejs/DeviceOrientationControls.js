@@ -118,7 +118,7 @@ THREE.DeviceOrientationControls = function(object) {
       quaternionLerp.slerp(quaternion, 0.5); // interpolate
 
       // orient the device
-      if (this.autoAlign) this.orientationQuaternion.copy(quaternion); // interpolation breaks the auto alignment
+      if (/*this.autoAlign*/false) this.orientationQuaternion.copy(quaternion); // interpolation breaks the auto alignment
       else this.orientationQuaternion.copy(quaternionLerp);
 
       // camera looks out the back of the device, not the top
@@ -186,4 +186,3 @@ THREE.DeviceOrientationControls = function(object) {
 };
 
 })();
-
