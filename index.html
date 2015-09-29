@@ -97,7 +97,7 @@
         );
         controls.noZoom = true;
         controls.noPan = true;
-        camera.lookAt(pole.position);
+        camera.rotation.y = Math.PI;
 
 				function setOrientationControls(e){
           if(!e.alpha){

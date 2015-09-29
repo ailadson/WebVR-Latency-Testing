@@ -125,7 +125,7 @@ THREE.DeviceOrientationControls = function(object) {
       this.orientationQuaternion.multiply(q1);
 
       // adjust for screen orientation
-      // this.orientationQuaternion.multiply(q0.setFromAxisAngle(zee, - this.orient));
+      this.orientationQuaternion.multiply(q0.setFromAxisAngle(zee, - this.orient));
 
       this.object.quaternion.copy(this.alignQuaternion);
       this.object.quaternion.multiply(this.orientationQuaternion);
